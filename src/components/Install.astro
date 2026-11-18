@@ -1,0 +1,128 @@
+---
+import { Image } from 'astro:assets';
+import desktopBrowser from '../assets/desktop-browser.png';
+import { installCommand, releasesUrl, securityUrl } from '../site';
+import CopyCommand from './CopyCommand.astro';
+---
+
+<section id="install" class="container section">
+  <div class="section-intro">
+    <span class="eyebrow">Install</span>
+    <h2>Up and running in a minute</h2>
+    <p>One binary, nothing else to install. Updates come with <code>brew upgrade qrup</code>.</p>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <h3>Homebrew <span class="tag">macOS &amp; Linux</span></h3>
+      <CopyCommand command={installCommand} />
+      <h3 class="second">Prebuilt binary</h3>
+      <p>
+        Download <code>qrup-&lt;platform&gt;.tar.gz</code> from the <a href={releasesUrl}
+          >latest release</a
+        >, unpack it, and run <code>./qrup</code>. Checksums are in <code>SHA256SUMS</code>.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Usage</h3>
+      <pre><code><span class="comment"># port 3000, saves to ./uploads</span>
+qrup
+<span class="comment"># custom port and upload folder</span>
+qrup -p 8080 -u ~/Downloads
+<span class="comment"># all options</span>
+qrup --help</code></pre>
+      <p class="note">
+        Prefer the desktop? Open the <code>Local</code> address qrup prints and drag files onto the
+        page.
+      </p>
+    </div>
+  </div>
+
+  <Image
+    class="screenshot"
+    src={desktopBrowser}
+    widths={[640, 1120, 1600]}
+    sizes="(min-width: 1160px) 1120px, 95vw"
+    alt="The qrup page in a desktop browser, with an upload area and a file browser"
+  />
+
+  <aside class="security">
+    <strong>Made for networks you trust.</strong> qrup serves plain HTTP on your local network. Only
+    devices that scan the QR code get in, unless you start it with <code>--open</code>. Never expose
+    it to the internet. <a href={securityUrl}>Security details</a>
+  </aside>
+</section>
+
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    gap: 1.25rem;
+  }
+
+  .grid > * {
+    min-width: 0;
+  }
+
+  h3 {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 1rem;
+    font-size: 1.15rem;
+  }
+
+  .second {
+    margin-top: 2rem;
+    margin-bottom: 0;
+  }
+
+  .tag {
+    padding: 0.15rem 0.55rem;
+    border-radius: 999px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0;
+  }
+
+  p {
+    margin: 0.6rem 0 0;
+    color: var(--text-muted);
+  }
+
+  p a {
+    color: var(--accent);
+  }
+
+  .note {
+    margin-top: 1rem;
+  }
+
+  .grid ~ :global(.screenshot) {
+    margin-top: 3rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: 0 30px 80px -30px rgb(0 0 0 / 0.5);
+  }
+
+  .security {
+    margin-top: 3rem;
+    padding: 1.25rem 1.5rem;
+    border-left: 3px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    background: var(--accent-soft);
+    color: var(--text-muted);
+  }
+
+  .security strong {
+    color: var(--text);
+  }
+
+  .security a {
+    color: var(--accent);
+    white-space: nowrap;
+  }
+</style>

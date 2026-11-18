@@ -1,0 +1,21 @@
+{
+  "name": "qrup-website",
+  "private": true,
+  "type": "module",
+  "description": "Landing page for qrup at https://qrup.me",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check && biome check .",
+    "format": "biome check --write ."
+  },
+  "dependencies": {
+    "astro": "^7.4.12"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.12",
+    "@biomejs/biome": "^2.6.8",
+    "typescript": "^6.0.3"
+  }
+}

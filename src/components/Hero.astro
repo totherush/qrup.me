@@ -1,0 +1,175 @@
+---
+import { Image } from 'astro:assets';
+import mobileBrowser from '../assets/mobile-browser.png';
+import qrTerminal from '../assets/qr-terminal.png';
+import { installCommand, repoUrl } from '../site';
+import CopyCommand from './CopyCommand.astro';
+import GitHubIcon from './GitHubIcon.astro';
+---
+
+<header class="container nav">
+  <a class="logo" href="/">
+    <img src="/favicon.svg" alt="" width="28" height="28" />
+    qrup
+  </a>
+  <nav>
+    <a href="#how-it-works">How it works</a>
+    <a href="#install">Install</a>
+    <a href={repoUrl} aria-label="qrup on GitHub"><GitHubIcon /></a>
+  </nav>
+</header>
+
+<section class="container hero">
+  <div class="copy">
+    <span class="eyebrow">Open source · macOS &amp; Linux</span>
+    <h1>Phone to computer.<br />Scan, drop, done.</h1>
+    <p class="lead">
+      qrup moves files between your phone and your computer over Wi-Fi. Run one command, scan the
+      QR code, and send files either way. No app, no account, no cloud.
+    </p>
+    <CopyCommand command={installCommand} />
+    <div class="actions">
+      <a class="button" href={repoUrl}><GitHubIcon /> View on GitHub</a>
+      <a class="text-link" href="#install">Other ways to install →</a>
+    </div>
+  </div>
+
+  <div class="visual" aria-label="qrup in a terminal and on a phone">
+    <Image
+      class="terminal"
+      src={qrTerminal}
+      widths={[480, 720, 1080]}
+      sizes="(min-width: 960px) 560px, 90vw"
+      alt="Terminal running qrup, showing the page address and a QR code"
+      loading="eager"
+    />
+    <Image
+      class="phone"
+      src={mobileBrowser}
+      widths={[220, 330, 440]}
+      sizes="(min-width: 960px) 220px, 36vw"
+      alt="The qrup upload page on a phone, with two uploaded photos"
+      loading="eager"
+    />
+  </div>
+</section>
+
+<style>
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-block: 1.25rem;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    text-decoration: none;
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    font-size: 0.95rem;
+  }
+
+  nav a {
+    color: var(--text-muted);
+    text-decoration: none;
+  }
+
+  nav a:hover {
+    color: var(--text);
+  }
+
+  nav :global(svg) {
+    display: block;
+    width: 1.35rem;
+    height: 1.35rem;
+  }
+
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+    align-items: center;
+    padding-block: clamp(2.5rem, 7vw, 5.5rem) clamp(3rem, 8vw, 6rem);
+  }
+
+  .hero > * {
+    min-width: 0;
+  }
+
+  h1 {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 800;
+  }
+
+  .lead {
+    margin: 1.4rem 0 2rem;
+    max-width: 34rem;
+    color: var(--text-muted);
+    font-size: 1.2rem;
+  }
+
+  .copy :global(.copy-command) {
+    max-width: 30rem;
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.25rem;
+    margin-top: 1.25rem;
+  }
+
+  .text-link {
+    color: var(--text-muted);
+    font-weight: 500;
+    text-decoration: none;
+  }
+
+  .text-link:hover {
+    color: var(--text);
+  }
+
+  .visual {
+    position: relative;
+    padding-right: 14%;
+    padding-bottom: 12%;
+  }
+
+  .visual :global(.terminal) {
+    border-radius: 12px;
+    box-shadow: 0 30px 80px -20px rgb(0 0 0 / 0.55);
+  }
+
+  .visual :global(.phone) {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 36%;
+    border: 6px solid #1c1f2b;
+    border-radius: 26px;
+    box-shadow: 0 30px 60px -15px rgb(0 0 0 / 0.6);
+  }
+
+  @media (max-width: 640px) {
+    nav a:not([aria-label]) {
+      display: none;
+    }
+  }
+
+  @media (min-width: 960px) {
+    .hero {
+      grid-template-columns: 1fr 1.1fr;
+    }
+  }
+</style>

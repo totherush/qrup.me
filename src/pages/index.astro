@@ -1,0 +1,21 @@
+---
+import Features from '../components/Features.astro';
+import Footer from '../components/Footer.astro';
+import Hero from '../components/Hero.astro';
+import HowItWorks from '../components/HowItWorks.astro';
+import Install from '../components/Install.astro';
+import Base from '../layouts/Base.astro';
+---
+
+<Base
+  title="qrup: move files between your phone and computer over Wi-Fi"
+  description="Run qrup, scan the QR code, and send files between your phone and your computer. No app, no account, no cloud. Open source for macOS and Linux."
+>
+  <Hero />
+  <main>
+    <HowItWorks />
+    <Features />
+    <Install />
+  </main>
+  <Footer />
+</Base>

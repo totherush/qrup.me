@@ -1,0 +1,40 @@
+---
+import { changelogUrl, licenseUrl, repoUrl } from '../site';
+
+const year: number = new Date().getFullYear();
+---
+
+<footer class="container">
+  <span>© {year} Tobias Trusch · <a href={licenseUrl}>MIT license</a></span>
+  <nav>
+    <a href={repoUrl}>GitHub</a>
+    <a href={changelogUrl}>Changelog</a>
+    <a href={`${repoUrl}/issues`}>Report an issue</a>
+  </nav>
+</footer>
+
+<style>
+  footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-block: 2.5rem;
+    border-top: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 0.9rem;
+  }
+
+  nav {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: var(--text);
+  }
+</style>

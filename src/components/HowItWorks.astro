@@ -1,0 +1,89 @@
+---
+interface Step {
+  title: string;
+  text: string;
+  command?: string;
+}
+
+const steps: Step[] = [
+  {
+    title: 'Start qrup',
+    text: 'Run it in any folder. It prints the page address and a QR code with a new access token.',
+    command: 'qrup',
+  },
+  {
+    title: 'Scan the QR code',
+    text: "Point your phone's camera at the terminal. The upload page opens in the phone's browser.",
+  },
+  {
+    title: 'Send files either way',
+    text: 'Upload photos and videos from the phone, or tick files on the computer and download them as a ZIP.',
+  },
+];
+---
+
+<section id="how-it-works" class="container section">
+  <div class="section-intro">
+    <span class="eyebrow">How it works</span>
+    <h2>Three steps, no setup</h2>
+    <p>Your phone needs nothing installed. Both devices only have to be on the same Wi-Fi.</p>
+  </div>
+
+  <ol>
+    {
+      steps.map((step: Step, index: number) => (
+        <li class="card">
+          <span class="number">{index + 1}</span>
+          <h3>{step.title}</h3>
+          <p>{step.text}</p>
+          {step.command && (
+            <code class="inline-command">
+              <span class="comment">$</span> {step.command}
+            </code>
+          )}
+        </li>
+      ))
+    }
+  </ol>
+</section>
+
+<style>
+  ol {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    gap: 1.25rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .number {
+    display: grid;
+    place-items: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    margin-bottom: 1.1rem;
+    border-radius: 50%;
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  h3 {
+    font-size: 1.2rem;
+  }
+
+  p {
+    margin: 0.6rem 0 0;
+    color: var(--text-muted);
+  }
+
+  .inline-command {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.35rem 0.75rem;
+    background: var(--code-bg);
+    color: #e8eaf2;
+    border-radius: 8px;
+  }
+</style>
