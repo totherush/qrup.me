@@ -7,6 +7,12 @@ import CopyCommand from './CopyCommand.astro';
 import GitHubIcon from './GitHubIcon.astro';
 ---
 
+<a class="announcement" href="#apps">
+  <span class="pill">Coming soon</span>
+  <span>qrup for Android and iPhone<span class="long">: share files right from your phone</span></span>
+  <span class="arrow" aria-hidden="true">→</span>
+</a>
+
 <header class="container nav">
   <a class="logo" href="/">
     <img src="/favicon.svg" alt="" width="28" height="28" />
@@ -14,6 +20,7 @@ import GitHubIcon from './GitHubIcon.astro';
   </a>
   <nav>
     <a href="#how-it-works">How it works</a>
+    <a href="#apps">Apps</a>
     <a href="#install">Install</a>
     <a href={repoUrl} aria-label="qrup on GitHub"><GitHubIcon /></a>
   </nav>
@@ -56,6 +63,48 @@ import GitHubIcon from './GitHubIcon.astro';
 </section>
 
 <style>
+  .announcement {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem 0.75rem;
+    padding: 0.65rem 1.25rem;
+    background: var(--accent-soft);
+    border-bottom: 1px solid var(--border);
+    font-size: 0.92rem;
+    font-weight: 500;
+    text-align: center;
+    text-decoration: none;
+  }
+
+  .announcement:hover .arrow {
+    transform: translateX(3px);
+  }
+
+  .arrow {
+    display: inline-block;
+    color: var(--accent);
+    transition: transform 0.15s;
+  }
+
+  @media (max-width: 640px) {
+    .long {
+      display: none;
+    }
+  }
+
+  .pill {
+    padding: 0.1rem 0.55rem;
+    border-radius: 999px;
+    background: var(--accent-strong);
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
   .nav {
     display: flex;
     align-items: center;

@@ -2,29 +2,34 @@
 import { repoUrl } from '../site';
 
 interface Teaser {
-  platform: string;
+  title: string;
   text: string;
 }
 
 const teasers: Teaser[] = [
   {
-    platform: 'Android & iPhone',
-    text: 'Host qrup on your phone, even over its own hotspot, and share with any device nearby. Send from the share sheet.',
+    title: 'Host from your phone',
+    text: 'Your phone runs qrup. Laptops, tablets, and other phones connect with just a browser.',
   },
   {
-    platform: 'Mac',
-    text: 'A menu bar app: start sharing with one click, no terminal needed.',
+    title: 'No Wi-Fi needed',
+    text: "Turn on your phone's hotspot and share on the train, at a café, or anywhere without a router.",
+  },
+  {
+    title: 'Send from any app',
+    text: 'Pick photos or files, tap Share, and choose qrup. Large videos keep uploading with the screen locked.',
   },
 ];
 ---
 
-<section class="container section">
+<section id="apps" class="container section">
   <div class="panel">
     <div class="intro">
       <span class="badge">Coming soon</span>
-      <h2>qrup apps for your phone and your Mac</h2>
+      <h2>qrup for Android and iPhone</h2>
       <p>
-        The command line stays free and open source. The apps add what a browser page can't do.
+        Share files right from your phone, with any device nearby. The command line stays free and
+        open source. A Mac menu bar app is planned too.
       </p>
       <a class="follow" href={`${repoUrl}/releases`}>Follow releases on GitHub →</a>
     </div>
@@ -33,7 +38,7 @@ const teasers: Teaser[] = [
       {
         teasers.map((teaser: Teaser) => (
           <li>
-            <h3>{teaser.platform}</h3>
+            <h3>{teaser.title}</h3>
             <p>{teaser.text}</p>
           </li>
         ))
